@@ -1,0 +1,74 @@
+$floral-white: hsla(46, 100%, 97%, 1);
+$floral-white-darker: rgb(235, 230, 217);
+$pale-silver: hsla(38, 16%, 76%, 1);
+$black-olive: hsla(34, 6%, 24%, 1);
+$eerie-black: hsla(40, 4%, 14%, 1);
+$flame: hsla(17, 83%, 54%, 1);
+
+$dark-lava: hsla(25, 9%, 25%, 1);
+$middle-grey: hsla(21, 6%, 51%, 1);
+$pale-silver: hsla(38, 8%, 72%, 1);
+$alabaster: hsla(50, 21%, 95%, 1);
+$alabaster-darker: hsla(50, 21%, 88%, 1);
+$melon: hsla(14, 51%, 75%, 1);
+
+$space-cadet: hsla(240, 27%, 18%, 1);
+$independence: hsla(232, 17%, 35%, 1);
+$heliotrope-gray: hsla(309, 6%, 58%, 1);
+$silver-pink: hsla(11, 24%, 72%, 1);
+$isabelline: hsla(21, 35%, 92%, 1);
+$isabelline-darker: hsla(21, 30%, 86%, 1);
+
+
+// $dark: $space-cadet;
+$text: $floral-white;
+$text-darker: $floral-white-darker;
+$dark-text: $black-olive;
+$link: $flame;
+$dark: $eerie-black;
+$body-background-color: $dark;
+
+$card-color: $dark;
+$card-background-color: $text-darker;
+
+$title-color: $text-darker;
+
+$label-color: $dark;
+
+$table-color: $dark-text;
+$table-head-cell-color: $dark-text;
+$table-striped-row-even-background-color: $text-darker;
+$table-background-color: $text;
+
+$navbar-item-color: $text !important;
+$navbar-burger-color: $text !important;
+$navbar-dropdown-background-color: $dark !important;
+
+@media screen and (max-width: 1087px) {
+    .navbar-menu {
+        background-color: $dark !important;
+    }
+    .navbar-item:hover {
+        background-color: $dark-text !important;
+    }
+}
+
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/grid/columns.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/elements/notification.sass";
+@import "../node_modules/bulma/sass/elements/table.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
+@import "../node_modules/bulma/sass/components/dropdown.sass";
+@import "../node_modules/bulma/sass/components/modal.sass";
+@import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/components/card.sass";
+@import "../node_modules/bulma/sass/components/tabs.sass";
+@import "../node_modules/bulma/sass/helpers/color.sass";
+@import "../node_modules/bulma/sass/helpers/typography.sass";
+@import "../node_modules/bulma/sass/helpers/spacing.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
