@@ -1,6 +1,7 @@
 <section class="section">
     <div class="container has-text-centered">
-        <h1 class="title is-1">Timers</h1>
+        <h1 class="title is-1">{title}</h1>
+        <h1 class="subtitle is-5">{subtitle}</h1>
     </div>
 </section>
 
@@ -29,20 +30,28 @@ import Circuit from "../components/Circuit.svelte";
 import Stopwatch from "../components/Stopwatch.svelte";
 
 let current = 1;
+let title, subtitle;
 $: tabs = [
     {
         is_active: true,
         icon: "fas fa-stopwatch",
         text: "Stopwatch",
-        value: 1 
+        value: 1,
+        title: "Stopwatch",
+        subtitle: "General purpose stopwatch"
     },
     {
         is_active: false,
         icon: "fas fa-flag-checkered",
         text: "Circuit",
-        value: 2 
+        value: 2,
+        title: "Circuit Timer",
+        subtitle: "Timer for circuit training"
     }
 ]
+
+$: title = tabs.filter(i => i.is_active)[0].title;
+$: subtitle = tabs.filter(i => i.is_active)[0].subtitle;
 
 const click_tab = (v) => {
     let new_tabs = []

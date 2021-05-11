@@ -1,6 +1,7 @@
 <section class="section">
     <div class="container has-text-centered">
-        <h1 class="title is-1">Distance Tools</h1>
+        <h1 class="title is-1">{title}</h1>
+        <h1 class="subtitle is-5">{subtitle}</h1>
     </div>
 </section>
 
@@ -28,21 +29,29 @@
 import Speed from '../components/Speed.svelte';
 import UnitConversion from '../components/UnitConversion.svelte'
 
+let title, subtitle;
 let current = 1;
 $: tabs = [
     {
         is_active: true,
         icon: "fas fa-calculator",
         text: "Unit Conversion",
-        value: 1 
+        value: 1,
+        title: "Unit Conversion",
+        subtitle: "Enter value in either box to perform calculation."
     },
     {
         is_active: false,
         icon: "fas fa-running",
         text: "Speed",
-        value: 2 
+        value: 2,
+        title: "Speed Calculator",
+        subtitle: "Calculate your average speed from a distance and time."
     }
 ]
+
+$: title = tabs.filter(i => i.is_active)[0].title;
+$: subtitle = tabs.filter(i => i.is_active)[0].subtitle;
 
 const click_tab = (v) => {
     let new_tabs = []

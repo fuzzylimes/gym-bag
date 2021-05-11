@@ -28,6 +28,9 @@
                                         <option>Miles</option>
                                         <option>Yards</option>
                                         <option>Feet</option>
+                                        <option disabled>----------</option>
+                                        <option>Kilometers</option>
+                                        <option>Meters</option>
                                     </select>
                                 </div>
                             </div>
@@ -37,6 +40,10 @@
                                     <select bind:value={value2_type} on:change={type_change}>
                                         <option>Kilometers</option>
                                         <option>Meters</option>
+                                        <option disabled>----------</option>
+                                        <option>Miles</option>
+                                        <option>Yards</option>
+                                        <option>Feet</option>
                                     </select>
                                 </div>
                             </div>
@@ -50,74 +57,97 @@
 
 <script>
 let value1, value2, value1_type, value2_type, last;
+let decimals = 2;
 
 const val1_update = () => {
     last = 1;
-    calc_val2();
+    value2 = convert(value1_type, value2_type, value1)
 }
 
 const val2_update = () => {
     last = 2;
+    value1 = convert(value2_type, value1_type, value2)
     calc_val1();
 }
 
 const type_change = () => {
     switch (last) {
         case 1:
-            calc_val2();
+            value2 = convert(value1_type, value2_type, value1)
             break;
         default:
-            calc_val1();
+            value1 = convert(value2_type, value1_type, value2)
             break;
     }
 }
 
-const calc_val2 = () => {
-    switch (value1_type) {
+const convert = (from, to, value) => {
+    switch (from) {
         case "Miles":
-            if (value2_type === "Kilometers") {
-                value2 = (value1 * 1.609).toFixed(2);
-            } else {
-                value2 = (value1 * 1609).toFixed(2);
+            switch (to) {
+                case "Kilometers":
+                    return (value * 1.609).toFixed(decimals);
+                case "Meters":
+                    return (value * 1609).toFixed(decimals);
+                case "Miles":
+                    return value
+                case "Yards":
+                    return (value * 1760).toFixed(decimals)
+                case "Feet":
+                    return (value * 5280).toFixed(decimals)
             }
-            break
         case "Yards":
-            if (value2_type === "Kilometers") {
-                value2 = (value1 / 1094).toFixed(2);
-            } else {
-                value2 = (value1 / 1.094).toFixed(2);
+            switch (to) {
+                case "Kilometers":
+                    return (value / 1094).toFixed(decimals);
+                case "Meters":
+                    return (value / 1.094).toFixed(decimals);
+                case "Miles":
+                    return (value / 1760).toFixed(decimals)
+                case "Yards":
+                    return value
+                case "Feet":
+                    return (value * 3).toFixed(decimals)
             }
-            break
         case "Feet":
-            if (value2_type === "Kilometers") {
-                value2 = (value1 / 3281).toFixed(2);
-            } else {
-                value2 = (value1 / 3.281).toFixed(2);
+            switch (to) {
+                case "Kilometers":
+                    return (value / 3281).toFixed(decimals);
+                case "Meters":
+                    return (value / 3.281).toFixed(decimals);
+                case "Miles":
+                    return (value / 5280).toFixed(decimals)
+                case "Yards":
+                    return (value / 3).toFixed(decimals)
+                case "Feet":
+                    return value
             }
-            break
-    }
-}
-
-const calc_val1 = () => {
-    switch (value2_type) {
         case "Kilometers":
-            if (value1_type === "Miles") {
-                value1 = (value2 / 1.609).toFixed(2);
-            } else if (value1_type === "Yards") {
-                value1 = (value3 * 1094).toFixed(2);
-            } else {
-                value1 = (value3 * 3281).toFixed(2);
+            switch (to) {
+                case "Kilometers":
+                    return value;
+                case "Meters":
+                    return (value * 1000).toFixed(decimals);
+                case "Miles":
+                    return (value / 1.609).toFixed(decimals)
+                case "Yards":
+                    return (value / 1094).toFixed(decimals)
+                case "Feet":
+                    return (value / 3281).toFixed(decimals)
             }
-            break
         case "Meters":
-            if (value1_type === "Miles") {
-                value1 = (value2 / 1609).toFixed(2);
-            } else if (value1_type === "Yards") {
-                value1 = (value3 * 1.094).toFixed(2);
-            } else {
-                value1 = (value3 * 3.281).toFixed(2);
+            switch (to) {
+                case "Kilometers":
+                    return (value / 1000).toFixed(decimals);
+                case "Meters":
+                    return value;
+                case "Miles":
+                    return (value / 1609).toFixed(decimals)
+                case "Yards":
+                    return (value * 1.094).toFixed(decimals)
+                case "Feet":
+                    return (value * 3.281).toFixed(decimals)
             }
-            break
     }
 }
 

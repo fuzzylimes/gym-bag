@@ -6,22 +6,19 @@
                     <h1 class="title is-1 is-size-1-mobile has-text-white is-uppercase app-title">
                         Gym Bag
                     </h1>
-                    <div class="subtitle is-4 has-text-white">
-                        <p>
-                            Useful tools in the persuit of better health
-                        </p>
-                    </div>
                 </div>
                 {#each apps as app}
                 <div class="column is-6-mobile is-2-tablet has-text-centered">
-                    <div>
-                        <span class="icon icon-large has-text-{app.icon_color}">
-                            <i class="{app.icon_string} fa-2x"></i>
-                        </span>
-                        <div class="has-text-white subtitle is-5">
-                            {app.name}
+                    <a href={app.link}>
+                        <div>
+                            <span class="icon icon-large has-text-{app.icon_color}">
+                                <i class="{app.icon_string} fa-2x"></i>
+                            </span>
+                            <div class="has-text-white subtitle is-5">
+                                {app.name}
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 {/each}
             </div>
@@ -34,17 +31,26 @@
         {
             icon_string: "fas fa-heartbeat",
             icon_color: "white",
-            name: "Heart Rate"
+            name: "Heart Rate",
+            link: "#/heart"
         },
         {
-            icon_string: "fas fa-heartbeat",
+            icon_string: "fas fa-dumbbell",
             icon_color: "white",
-            name: "Heart Rate"
+            name: "Plate Calculator",
+            link: "#/plates"
         },
         {
-            icon_string: "fas fa-heartbeat",
+            icon_string: "fas fa-stopwatch",
             icon_color: "white",
-            name: "Heart Rate"
+            name: "Timers",
+            link: "#/timers"
+        },
+        {
+            icon_string: "fas fa-ruler",
+            icon_color: "white",
+            name: "Distance",
+            link: "#/distance"
         }
     ]
 </script>
