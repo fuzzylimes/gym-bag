@@ -8,22 +8,27 @@
 <div class="container">
     <div class="columns is-centered is-vcentered">
         <div class="column is-half">
-
             <div class="card calculator">
                 <div class="card-content">
                     <div class="content">
-                        <div class="field">
-                            <label for="Age" class="label">Age</label>
-                            <div class="control">
-                                <input id="Age" class="input" type="number" placeholder="Enter your Age" bind:value={age}>
+                        <div class="columns is-vcentered">
+                            <div class="column is-half">
+                                <div class="field">
+                                    <label for="Age" class="label">Age</label>
+                                    <div class="control">
+                                        <input id="Age" class="input" type="number" placeholder="Enter your Age" bind:value={age}>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="field">
-                            <label for="Rest" class="label">Resting Heart Rate</label>
-                            <div class="control">
-                                <input id="Rest" class="input" type="number" placeholder="Enter your resting heart rate" bind:value={resting}>
+                            <div class="column is-half">
+                                <div class="field">
+                                    <label for="Rest" class="label">Resting Heart Rate</label>
+                                    <div class="control">
+                                        <input id="Rest" class="input" type="number" placeholder="Enter your resting heart rate" bind:value={resting}>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
                 <footer class="card-footer">
@@ -38,7 +43,7 @@
     <div class="columns is-centered is-vcentered">
         {#if valid}
 			<div class="has-text-centered">
-				<h4 class="subtitle is-4">Heart Range for a {age} year old with a resting heart rate of {resting}</h4>
+				<h4 class="subtitle is-4">Heart Range for a {age_val} year old with a resting heart rate of {rest_val}</h4>
                 <table class="table is-fullwidth is-striped results">
                     <thead>
                         <tr>
@@ -67,15 +72,17 @@
 </section>
 
 <script>
-    let age, resting, hrr, aerobic, anaerobic, max_rate;
+    let age, resting, hrr, aerobic, anaerobic, max_rate, rest_val, age_val;
 	let valid = false;
 
 	const calculate = () => {
 		try {
+            rest_val = resting;
+            age_val = age;
 			max_rate = 205.8 - (0.685 * age);
 			hrr = max_rate - resting;
-			aerobic = `${Math.ceil(resting + hrr * .5)} - ${Math.ceil(resting + hrr * .75)}`;
-			anaerobic = `${Math.ceil(resting + hrr * .8)} - ${Math.ceil(resting + hrr * .85)}`;
+			aerobic = `${Math.ceil(resting + hrr * .5)} - ${Math.ceil(resting + hrr * .70)}`;
+			anaerobic = `${Math.ceil(resting + hrr * .70)} - ${Math.ceil(resting + hrr * .85)}`;
 			valid = true;
 		} catch (error) {
 			valid = false;

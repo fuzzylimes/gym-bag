@@ -48,6 +48,10 @@
         {
             url: "#/distance",
             text: "Distance"
+        },
+        {
+            url: "#/about",
+            text: "About"
         }
     ]
     

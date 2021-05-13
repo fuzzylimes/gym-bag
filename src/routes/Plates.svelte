@@ -6,22 +6,27 @@
 </section>
 
 <div class="container">
-    <div class="columns is-centered is-vcentered">
-        <div class="column is-half">
-
+    <div class="columns is-centered is-vcentered is-mobile">
+        <div class="column is-half-tablet">
             <div class="card calculator">
                 <div class="card-content">
                     <div class="content">
-                        <div class="field">
-                            <label for="Weight" class="label">Working Weight</label>
-                            <div class="control">
-                                <input id="Weight" class="input" type="number" placeholder="Enter workout weight" bind:value={weight}>
+                        <div class="columns is-vcentered">
+                            <div class="column is-half">
+                                <div class="field">
+                                    <label for="Weight" class="label">Working Weight</label>
+                                    <div class="control">
+                                        <input id="Weight" class="input" type="number" placeholder="Enter workout weight" bind:value={weight}>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="field">
-                            <label for="Bar" class="label">Barbell Weight</label>
-                            <div class="control">
-                                <input id="Bar" class="input" type="number" bind:value={bar}>
+                            <div class="column is-half">
+                                <div class="field">
+                                    <label for="Bar" class="label">Barbell Weight</label>
+                                    <div class="control">
+                                        <input id="Bar" class="input" type="number" bind:value={bar}>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <label for="Units" class="label">Units</label>
@@ -59,13 +64,13 @@
             {/if}
             <div class="column is-half-tablet is-4-widescreen">
                 <div class="has-text-centered">
-                    <h4 class="subtitle is-4">Pairs of plates needed for {weight}{u}s with a {bar}{u} bar.</h4>
+                    <h4 class="subtitle is-4">Pairs of plates needed for {weight_val}{u_val}s with a {bar_val}{u_val} bar.</h4>
                     <table class="table is-fullwidth is-striped results">
                         <thead>
                             <tr>
                                 {#each plates as plate, i}
                                 {#if plate != 0}
-                                <th>{getPlate(i)}{u}</th>
+                                <th>{getPlate(i)}{u_val}</th>
                                 {/if}
                                 {/each}
                             </tr>
@@ -93,7 +98,7 @@
 </section>
 
 <script>
-    let weight, bar, plates, error, u;
+    let weight, bar, plates, error, u, weight_val, bar_val, u_val;
     let w = true;
     let bar_lbs = 45;
     let bar_kgs = 20;
@@ -133,7 +138,9 @@
             console.error(error);
         }
         valid = true;
-        console.log(plates);
+        weight_val = weight;
+        bar_val = bar;
+        u_val = u;
 	}
 
     const getPlate = (i) => {

@@ -4,6 +4,7 @@ import HeartRate from './routes/HeartRate.svelte'
 import Plates from './routes/Plates.svelte'
 import Timers from './routes/Timers.svelte'
 import Distance from './routes/Distance.svelte'
+import About from './routes/About.svelte'
 
 // Export the route definition object
 export default {
@@ -11,5 +12,6 @@ export default {
     '/heart': HeartRate,
     '/plates': Plates,
     '/timers': Timers,
-    '/distance': Distance
+    '/distance': Distance,
+    '/about': About
 }
