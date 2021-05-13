@@ -157,6 +157,7 @@
         current_time--;
         setDisplayTime(current_time);
         if (current_time === 0) {
+            playSound('./beep.mp3');
             current = current + 1 == circuits.length ? 0 : current + 1;
             console.log(current);
             setSteps();
@@ -185,6 +186,11 @@
                 return;
             }
         });
+    }
+
+    function playSound(url) {
+        const audio = new Audio(url);
+        audio.play();
     }
 </script>
 
